@@ -32,9 +32,84 @@ for row in rutas_cix.iterrows():
 
 DG.nodes(data=True)
 
-nx.draw_circular(DG, 
-                 node_color="lightblue",
-                 edge_color="gray",
-                 font_size=20,
-                 width=2, with_labels=True, node_size=3500,
-)
+
+#nx.draw_circular(DG, 
+#                 node_color="lightblue",
+#                edge_color="gray",
+#                font_size=20,
+#                 width=2, with_labels=True, node_size=3500,
+
+#)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def plot_shortest_path(path):
+    print(path)
+    positions = nx.circular_layout(DG)
+    
+    nx.draw(DG, pos=positions,
+                node_color='lightblue',
+                edge_color='gray',
+                font_size=24,
+                width=1, with_labels=True, node_size=3500, alpha=0.8
+           )
+    
+    short_path=nx.DiGraph()
+    for i in range(len(path)-1):
+        short_path.add_edge(path[i], path[i+1])
+    
+    nx.draw(short_path, pos=positions,
+                node_color='dodgerblue',
+                edge_color='dodgerblue',
+                font_size=24,
+                width=3, with_labels=True, node_size=3000
+           )
+    plt.show()
+    
+    
+    
+#Algoritmo Dijstra con la libreria Networkx -Informada   
+plot_shortest_path(nx.dijkstra_path(DG,'USAT','ENTRA',weight='cost'))
+
+#Algoritmo A* con la libreria Networkx -Informada
+#plot_shortest_path(nx.astar_path(DG, 'USAT', 'RIPLEY',weigth='cost'))
