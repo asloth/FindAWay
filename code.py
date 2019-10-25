@@ -10,7 +10,7 @@ Created on Thu Oct  3 19:53:18 2019
 # Networkx para grafos
 import networkx as nx 
 
-from collections import defaultdict, deque
+from collections import deque
 
 # Pandas
 import pandas as pd
@@ -34,22 +34,28 @@ for row in rutas_cix.iterrows():
 
 DG.nodes(data=True)
 
-def plot_shortest_path(path):
+
+def plot_path(path):
     print(path)
-    positions = nx.circular_layout(DG)
-    
-    nx.draw(DG, pos=positions,
+    nx.draw(DG,
                 node_color='lightblue',
                 edge_color='gray',
                 font_size=10,
                 width=1, with_labels=True, node_size=1000, alpha=0.8
-           )
+                )
+    
+    plt.show()
+    
+
+plot_path(DG)
+   
+def plot_shortest_path(path):
     
     short_path=nx.DiGraph()
     for i in range(len(path)-1):
         short_path.add_edge(path[i], path[i+1])
     
-    nx.draw(short_path, pos=positions,
+    nx.draw(short_path,
                 node_color='dodgerblue',
                 edge_color='dodgerblue',
                 font_size=10,
@@ -69,7 +75,7 @@ plot_shortest_path(nx.astar_path(DG, 1, 25,weight='cost'))
 
 
 print('--------------Shortest Path------------------')
-print (list(nx.all_shortest_paths(DG, source=1, target=25, weight='cost')))
+print (list(nx.shortest_path(DG, source=1, target=25, weight='cost')))
 #print (list(nx.all_shortest_paths(DG, source="ENTRA", target="METBAL", weight='cost')))
 
 def has_path(G, source, target):
