@@ -1,51 +1,51 @@
-﻿code,name
-USAT,USAT
-TTPLAZNOR,Terminal Terrestre
-CSTM,Colegio Santo Toribio de Mogrovejo
-HRL,Hospital Regional de Lambayeque
-UTP,UTP
-MALL,Mall Aventura
-UGEL,UGEL
-PSJMV,Parroqui San Juan M. Vianey
-HBPU,Hiper Bodega Precio Uno
-MAES,Maestro
-HIMECE,HiperMercado Ceramica
-HOSPSOL,Hospital Solidaridad
-CECOTUMREA,Centro de Convenciones Tumbas Reales
-CASAND,Casa Andina
-RESJULIA,Tia Julia
-BCRP,BCRP
-MERCMOD,Mercado Modelo
-OLANO,Olano
-COFART,Coffe Art
-RIPLEY,Ripley
-PLELIAGU,Plazuela Elias Aguirre
-SUNAT,SUNAT
-HOSMERC,Hospital Las Mercedes
-PRIMAX,PRIMAX
-ENTRA,ENTRAFESA
-COSANJO,Colegio San Jose
-METBAL,Metro Balta
-METGRA,Metro Grau
-LASMUS,Las Musas
-PASEÑOPAZ,Parroquia Nuestra Señora de la Consolación
-COMICAMPO,Comisaria Campodonico
-HOSPALMAN,Hospital Almanzor
-BOULE,Bulevard
-CATECHIC,Catedral de Chiclayo
-REALPLAZ,Real Plaza
-OPENPLAZ,Open Plaza
-AER,Aeropuerto Jose Abelardo
-PASYOR,Paseo Yortuque
-BRAROJA,Brasa Roja
-RESJOCKEY,Residencial Jockey Club
-COLSANMAREY,Colegio Santa Maria Reina
-PLAZMEDAMILA,Plaza de la Virgen de la Medalla Milagrosa
-METSANELE,Metro Santa Elena
-RESTRIPATO,Ricon del Pato
-COLEOBSTE,Colegio de las Obstetras
-GOBREGILAMB,Gobierno Regional de Lambayeque
-PARQROSA,Parque El Rosario
-MERCSOL,Mercado Sol de Oro
-CARPMETA,Carpinteria Metalica Calderon
-SANTPAZ,Santuario Nuestra Señora de la Paz
+﻿name,code
+USAT,1
+Terminal Terrestre,2
+Colegio Santo Toribio de Mogrovejo,3
+Hospital Regional de Lambayeque,4
+UTP,5
+Mall Aventura,6
+UGEL.7
+Parroqui San Juan M. Vianey,8
+Hiper Bodega Precio Uno,9
+Maestro,10
+HiperMercado Ceramica,11
+Hospital Solidaridad,12
+Centro de Convenciones Tumbas Reales,13
+Casa Andina,14
+Tia Julia,15
+BCRP,16
+Mercado Modelo,17
+Olano,17
+Coffe Art,19
+Ripley,20
+Plazuela Elias Aguirre,21
+SUNAT,22
+Hospital Las Mercedes,23
+PRIMAX,24
+ENTRAFESA,25
+Colegio San Jose,26
+Metro Balta,27
+Metro Grau,28
+Las Musas,29
+Parroquia Nuestra Señora de la Consolación,30
+Comisaria Campodonico,31
+Hospital Almanzor,32
+Bulevard,33
+Catedral de Chiclayo,34
+Real Plaza,35
+Open Plaza,36
+Aeropuerto Jose Abelardo,37
+Paseo Yortuque,38
+Brasa Roja,39
+Residencial Jockey Club,40
+Colegio Santa Maria Reina,41
+Plaza de la Virgen de la Medalla Milagrosa,42
+Metro Santa Elena,43
+Ricon del Pato,44
+Colegio de las Obstetras,45
+Gobierno Regional de Lambayeque,46
+Parque El Rosario,47
+Mercado Sol de Oro,48
+Carpinteria Metalica Calderon,49
+Santuario Nuestra Señora de la Paz,50

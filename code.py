@@ -10,6 +10,7 @@ Created on Thu Oct  3 19:53:18 2019
 # Networkx para grafos
 import networkx as nx 
 
+from collections import defaultdict, deque
 
 # Pandas
 import pandas as pd
@@ -21,61 +22,17 @@ plt.rcParams['figure.figsize'] = (20.0, 10.0)
 cix = pd.read_csv('vertices.csv')
 
 cix.set_index(["code"], inplace=True)
-cix.head()
 
-rutas_cix = pd.read_csv("rutascompletas.csv")
-rutas_cix.head()
+rutas_cix = pd.read_csv("rutacompleta.csv")
 
-DG=nx.DiGraph()
+DG=nx.Graph()
+
 for row in rutas_cix.iterrows():
     DG.add_edge(row[1]["origin"],
                 row[1]["destination"],
                 duration=row[1]["cost"])
 
 DG.nodes(data=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 def plot_shortest_path(path):
     print(path)
@@ -84,8 +41,8 @@ def plot_shortest_path(path):
     nx.draw(DG, pos=positions,
                 node_color='lightblue',
                 edge_color='gray',
-                font_size=24,
-                width=1, with_labels=True, node_size=3500, alpha=0.8
+                font_size=10,
+                width=1, with_labels=True, node_size=1000, alpha=0.8
            )
     
     short_path=nx.DiGraph()
@@ -95,26 +52,24 @@ def plot_shortest_path(path):
     nx.draw(short_path, pos=positions,
                 node_color='dodgerblue',
                 edge_color='dodgerblue',
-                font_size=24,
-                width=3, with_labels=True, node_size=3000
+                font_size=10,
+                width=3, with_labels=True, node_size=1000
            )
     plt.show()
     
     
     
 #Algoritmo Dijstra con la libreria Networkx -Informada   
-plot_shortest_path(nx.dijkstra_path(DG,'USAT','ENTRA',weight='cost'))
+print('----------------------Dijkstra------------------')
+plot_shortest_path(nx.dijkstra_path(DG,1,25,weight='cost'))
 
 #Algoritmo A* con la libreria Networkx -Informada
-#plot_shortest_path(nx.astar_path(DG, 'USAT', 'RIPLEY',weigth='cost'))
-"""nx.draw(DG, 
-                 node_color="lightblue",
-                 edge_color="gray",
-                 font_size=20,
-                 width=2, with_labels=True, node_size=3500,
-)"""
+print('-----------------------A*-----------------------')
+plot_shortest_path(nx.astar_path(DG, 1, 25,weight='cost'))
 
-#print (list(nx.all_shortest_paths(DG, source="METBAL", target="ENTRA", weight='cost')))
+
+print('--------------Shortest Path------------------')
+print (list(nx.all_shortest_paths(DG, source=1, target=25, weight='cost')))
 #print (list(nx.all_shortest_paths(DG, source="ENTRA", target="METBAL", weight='cost')))
 
 def has_path(G, source, target):
@@ -124,14 +79,13 @@ def has_path(G, source, target):
         return False
     return True
 
-#print (has_path(DG,"METBAL", "ENTRA"))
+#print (has_path(DG,"10", "24"))
 
 def dfs_edges(G, source=None, depth_limit=None,target=None):
     if source is None:
         # edges for all components
         nodes = G
-    else:
-        # edges for components with source
+    else:# edges for components with source
         nodes = [source]
         final_target = [target]
         
@@ -148,17 +102,43 @@ def dfs_edges(G, source=None, depth_limit=None,target=None):
             parent, depth_now, children = stack[-1]
             try:
                 child = next(children)
-                
                 if child not in visited:
                     yield parent, child
                     if child == final_target:
-                        visited.add(child)
-                    if depth_now > 1:
-                        stack.append((child, depth_now - 1, iter(G[child])))
+                        break
+                    else:
+                         visited.add(child)
+                         if depth_now > 1:
+                             stack.append((child, depth_now - 1, iter(G[child])))
             except StopIteration:
                 stack.pop()
+                
+                
+            
+#Primero en Profundidad -No Informada
+print('------------DFS--------------------')
+print( list(dfs_edges(DG,source=1, target=25)) )
 
-print ( list(dfs_edges(DG,source="METBAL",depth_limit=None, target="PASEÑOPAZ")) )
+def bfs_edges(G,source=None,target=None):
+    final_target = [target]
+    neighbors = G.neighbors_iter
+    visited = set([source])
+    queue = deque([(source, neighbors(source))])
+    while queue:
+        parent, children = queue[0]
+        try:
+            child = next(children)
+            if child not in visited:
+                yield parent, child
+                if child == final_target:
+                    break
+                else:
+                    visited.add(child)
+                    queue.append((child, neighbors(child)))
+        except StopIteration:
+            queue.popleft()
+
+#print( list(bfs_edges(DG,source="METBAL",target="PASEÑOPAZ")))
 
 """
 
